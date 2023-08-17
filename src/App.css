@@ -35,3 +35,40 @@ button {
   margin: 8px 0;
   border: none;
 }
+
+@media screen and (max-width:770px) {
+  .createForm {
+    background-color: #87d37c;
+    width: 30vw;
+    padding: 17px;
+    height: fit-content;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width:520px) {
+  .createForm {
+    background-color: #87d37c;
+    width: 50vw;
+    padding: 17px;
+    height: fit-content;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width:370px) {
+  .createForm {
+    background-color: #87d37c;
+    width: 80vw;
+    padding: 17px;
+    height: fit-content;
+    border-radius: 5px;
+  }
+
+  .container {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+
+}
