@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Form from "../components/form";
 import axios from "axios";
 
+const userURL = process.env.REACT_APP_USER_URL;
+const exerciseUrl = process.env.REACT_APP_EXERCISE_URL;
+
+// console.log("user url : ", userURL);
+
 const ExerciseTracker = () => {
   const [user, setUser] = useState({
     username: "",
@@ -17,12 +22,13 @@ const ExerciseTracker = () => {
   const handleAddUser = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/api/users", {
+      .post(userURL, {
         user,
       })
       .then((res) => {
         const createdUser = res.data;
         console.log(createdUser);
+        window.open(userURL + "/" + createdUser._id, '_blank');
       });
   };
 
@@ -40,18 +46,19 @@ const ExerciseTracker = () => {
   const handleAddExercise = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/api/users/:_i/exercises", {
+      .post(exerciseUrl, {
         exercise,
       })
       .then((res) => {
         const createdExercises = res.data;
         console.log("createdExercises: ", createdExercises);
-      })
-      .catch(err=>{
-        console.log("there was an error tying to add new exercise: ", err);
+        console.log(exerciseUrl + "/" + createdExercises.userId + "/exercises")
+        window.open(exerciseUrl + "/" + createdExercises.userId + "/exercises", '_blank')
       })
 
-      
+      .catch((err) => {
+        console.log("there was an error tying to add new exercise: ", err);
+      });
   };
 
   return (
