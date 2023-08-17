@@ -69,6 +69,7 @@ button {
     display: flex;
     gap: 5px;
     flex-direction: column;
+    margin: auto;
   }
 
 }
